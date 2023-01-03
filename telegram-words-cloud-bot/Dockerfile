@@ -15,12 +15,5 @@ RUN pip install pipenv && pipenv install --dev --system --deploy
 WORKDIR /app
 COPY . /app
 
-# Creates a non-root user and adds permission to access the /app folder
-RUN addgroup -S appgroup && adduser -S appuser -G appgroup
-RUN chown appuser:appgroup /app
-RUN chown appuser:appgroup ./data
-RUN chown appuser:appgroup ./output
-USER appuser
-
 # During debugging, this entry point will be overridden. For more information, please refer to https://aka.ms/vscode-docker-python-debug
 CMD ["python", "src/main.py"]
