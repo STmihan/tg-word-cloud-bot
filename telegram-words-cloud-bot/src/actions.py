@@ -29,9 +29,11 @@ async def generate_word_cloud_action(context: ContextTypes.DEFAULT_TYPE, update:
     output_words_name = os.path.basename(file_name).split(".")[0] + "_words.txt"
     await context.bot.send_message(chat_id=update.effective_chat.id, text=GENERATED_CLOUD_MESSAGE)
     await context.bot.send_photo(chat_id=update.effective_chat.id,
-                                 photo=open(f'./output/{username}/{output_wordcloud_name}', 'rb'))
+                                 photo=open(f'./output/{username}/{output_wordcloud_name}', 'rb'),
+                                 filename=username + "_wordcloud.png")
     await context.bot.send_document(chat_id=update.effective_chat.id,
-                                    document=open(f'./output/{username}/{output_words_name}', 'rb'))
+                                    document=open(f'./output/{username}/{output_words_name}', 'rb'),
+                                    filename=username + "_words.txt")
 
 
 async def help_action(update: Update, context: ContextTypes.DEFAULT_TYPE):
