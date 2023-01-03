@@ -16,11 +16,11 @@ WORKDIR /app
 COPY . /app
 
 # Creates a non-root user and adds permission to access the /app folder
-RUN adduser -u 5678 --disabled-password --gecos "" appuser && chown -R appuser /app
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+RUN chown appuser:appgroup /app
+RUN chown appuser:appgroup ./data
+RUN chown appuser:appgroup ./output
 USER appuser
-RUN chown -R 1000:1000 /app
-RUN chown -R 1000:1000 ./data
-RUN chown -R 1000:1000 ./output
 
 # During debugging, this entry point will be overridden. For more information, please refer to https://aka.ms/vscode-docker-python-debug
 CMD ["python", "src/main.py"]
