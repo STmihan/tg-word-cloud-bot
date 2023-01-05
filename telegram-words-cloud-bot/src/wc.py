@@ -4,11 +4,7 @@ import sys
 import os
 
 from wordcloud import WordCloud
-
-
-def load_stopwords():
-    with open('./assets/stopwords.txt', encoding="utf8") as stf:
-        return set(stf.read().splitlines())
+import get_stopwords as Stopwords
 
 
 def strip_message(m):
@@ -85,7 +81,7 @@ def run_wordcloud_generator(file_path, username, external_stopwords=None):
 
     messages = load_messages(file_path)
     print("Messages: " + str(len(messages)))
-    stopwords = load_stopwords()
+    stopwords = Stopwords.get_stopwords()
     if external_stopwords is not None:
         stopwords.update(external_stopwords)
 
