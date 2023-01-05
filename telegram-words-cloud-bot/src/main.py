@@ -21,6 +21,7 @@ def main():
         CommandHandler('help', Handlers.help_handler),
         MessageHandler(filters.ATTACHMENT, Handlers.generate_word_cloud_handler),
         CommandHandler('setlanguage', Handlers.set_language_handler),
+        MessageHandler(filters.ALL, Handlers.wrong_file_handler),
         CallbackQueryHandler(Handlers.set_language_callback_handler, pattern='^set_language_')
     ]
     application.add_handlers(handlers)

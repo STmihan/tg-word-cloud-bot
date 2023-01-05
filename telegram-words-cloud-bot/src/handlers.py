@@ -11,8 +11,8 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 async def generate_word_cloud_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    if not update.message.document.file_name.endswith('.json') or update.message.document.mime_type != 'application/json':
-        await Utils.send_message(context, update.effective_chat.id, Messages.WRONG_FILE_MESSAGE)
+    if update.message.document is None or not update.message.document.file_name.endswith('.json'):
+        await Actions.wrong_file_action(update, context)
         return
 
     try:
@@ -32,3 +32,7 @@ async def set_language_handler(update: Update, context: ContextTypes.DEFAULT_TYP
 
 def set_language_callback_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     return Actions.set_language_callback_action(update, context)
+
+
+def wrong_file_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    return Actions.wrong_file_action(update, context)
