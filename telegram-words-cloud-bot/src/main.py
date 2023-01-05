@@ -1,7 +1,7 @@
 import logging
 import os
 
-from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters
+from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, CallbackQueryHandler
 
 import handlers as Handlers
 
@@ -20,6 +20,8 @@ def main():
         CommandHandler('start', Handlers.start),
         CommandHandler('help', Handlers.help_handler),
         MessageHandler(filters.ATTACHMENT, Handlers.generate_word_cloud_handler),
+        CommandHandler('setlanguage', Handlers.set_language_handler),
+        CallbackQueryHandler(Handlers.set_language_callback_handler, pattern='^set_language_')
     ]
     application.add_handlers(handlers)
 
