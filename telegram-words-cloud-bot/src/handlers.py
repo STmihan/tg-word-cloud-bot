@@ -2,8 +2,6 @@ from telegram import Update
 from telegram.ext import ContextTypes
 
 import actions as Actions
-import utils as Utils
-import messages as Messages
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):

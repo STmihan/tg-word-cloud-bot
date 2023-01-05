@@ -1,6 +1,3 @@
-from typing import Union, Sequence
-
-from telegram import InputMediaPhoto, InputMediaAudio, InputMediaDocument, InputMediaVideo
 from telegram.ext import ContextTypes
 
 
