@@ -2,6 +2,7 @@ import os
 
 
 def get_stopwords() -> set:
+    print("Getting stopwords...")
     stopwords_files = os.listdir("./stopwords")
     stopwords = set()
     for file in stopwords_files:
