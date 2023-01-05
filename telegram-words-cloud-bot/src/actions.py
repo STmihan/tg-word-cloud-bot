@@ -79,3 +79,7 @@ async def set_language_callback_action(update, context):
 
 async def error_action(update, context):
     await Utils.send_message(context, update.effective_chat.id, Messages.ERROR_MESSAGE)
+
+
+async def wrong_file_action(update, context):
+    await Utils.send_message(context, update.effective_chat.id, Messages.WRONG_FILE_MESSAGE)
